@@ -73,7 +73,7 @@ namespace TaskTracker.Tests
 
 			Assert.False(result);
 			mock.Verify(repo => repo.Delete(It.IsAny<TodoTask>()), Times.Never);
-			mock.Verify(repo => repo.SaveChanges(), Times.Once());
+			mock.Verify(repo => repo.SaveChanges(), Times.Never());
 		}
 
 		[Fact]
@@ -102,7 +102,7 @@ namespace TaskTracker.Tests
 			var result = service.MarkComplete(Guid.NewGuid());
 
 			Assert.Null(result);
-			mock.Verify(repo => repo.SaveChanges(), Times.Once());
+			mock.Verify(repo => repo.SaveChanges(), Times.Never());
 		}
 	}
 }
